@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form id="ModalForm" name="stepForm" class="form" method="post">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+  </div>
+  <div class="modal-body">
+
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.course_name.label(class="form-control-label") }}
+      {% if form.course_name.errors %}
+      {{ form.course_name(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_name.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_name(class="form-control form-control-lg") }}
+      {% endif %}
+
+    </div><br>
+    <div class="form-group">
+      {{ form.course_price.label(class="form-control-label") }}
+      {% if form.course_price.errors %}
+      {{ form.course_price(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_price.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_price(class="form-control form-control-lg") }}
+      {% endif %}
+
+    </div><br>
+    <div class="form-group">
+      {{ form.course_description.label(class="form-control-label") }}
+      {% if form.course_description.errors %}
+      {{ form.course_description(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_description.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_description(class="form-control form-control-lg") }}
+      {% endif %}
+      <br>
+
+
+    </div><br>
+    <div class="row">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center">
+          {% for edu_teacher in edu_teachers%}
+          <div class="col-md-12 col-xl-4">
+            <div class="card mt-3 mb-2" style="border-radius: 15px;">
+              <div class="card-body text-center">
+                <h4 class="mb-2"> {{ edu_teacher.first_name }} {{ edu_teacher.last_name }} </h4>
+                <p class="text-muted mb-4">
+                  {{ edu_teacher.languages }}<br />
+                  {{ edu_teacher.info }}
+                </p>
+                <button type="button" class="btn btn-primary">
+                  <a href="{{ url_for('edit_edu_teacher', id = edu_teacher.id) }}"
+                    style="color: white; text-decoration: none;">Изменить</a>
+                </button>
+                <button type="button" class="btn btn-danger">
+                  <a href="{{ url_for('delete_edu_teacher', id = edu_teacher.id) }}"
+                    style="color: white; text-decoration: none;">Удалить</a>
+                </button>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"> <a href="{{url_for('account')}}"
+        style="color: black; text-decoration: none;">Отмена</a> </button>
+    <a href="{{url_for('account')}}" style="color: black; text-decoration: none;"><button id="submit" type="submit"
+        class="btn btn-primary">Сохранить</button></a>
+  </div>
+</form>
+{% block modal %}
+
+{% endblock %}
+{% endblock %}

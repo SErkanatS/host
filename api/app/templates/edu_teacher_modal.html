@@ -1,0 +1,97 @@
+{% extends 'add_course.html' %}
+
+{% block modal %}
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Добавьте учителей</h1>
+            <a href="{{ url_for('account') }}"><button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button></a>
+         </div>
+         <div class="modal-body">
+            {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form method="POST">
+               {{ edu_teacher_form.hidden_tag() }}
+
+               <div class="form-group">
+                  {{ edu_teacher_form.first_name.label(class="form-control-label") }}
+                  {% if edu_teacher_form.first_name.errors %}
+                  {{ edu_teacher_form.first_name(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                     {% for error in edu_teacher_form.first_name.errors %}
+                     <span>{{ error }}</span>
+                     {% endfor %}
+                  </div>
+                  {% else %}
+                  {{ edu_teacher_form.first_name(class="form-control form-control-lg") }}
+                  {% endif %}
+
+               </div><br>
+               <div class="form-group">
+                  {{ edu_teacher_form.last_name.label(class="form-control-label") }}
+                  {% if edu_teacher_form.last_name.errors %}
+                  {{ edu_teacher_form.last_name(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                     {% for error in edu_teacher_form.last_name.errors %}
+                     <span>{{ error }}</span>
+                     {% endfor %}
+                  </div>
+                  {% else %}
+                  {{ edu_teacher_form.last_name(class="form-control form-control-lg") }}
+                  {% endif %}
+
+               </div><br>
+               <div class="form-group">
+                  {{ edu_teacher_form.languages.label(class="form-control-label") }}
+                  {% if edu_teacher_form.languages.errors %}
+                  {{ edu_teacher_form.languages(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                     {% for error in edu_teacher_form.languages.errors %}
+                     <span>{{ error }}</span>
+                     {% endfor %}
+                  </div>
+                  {% else %}
+                  {{ edu_teacher_form.languages(class="form-control form-control-lg") }}
+                  {% endif %}
+                  <br>
+                  <div class="form-group">
+                     {{ edu_teacher_form.info.label(class="form-control-label") }}
+                     {% if edu_teacher_form.info.errors %}
+                     {{ edu_teacher_form.info(class="form-control form-control-lg is-invalid") }}
+                     <div class="invalid-feedback">
+                        {% for error in edu_teacher_form.info.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                     </div>
+                     {% else %}
+                     {{ edu_teacher_form.info(class="form-control form-control-lg") }}
+                     {% endif %}
+
+            </form>
+         </div>
+         <div class="modal-footer">
+            <div class="form-group">
+               {{ edu_teacher_form.submit(class="btn btn-outline-primary") }}
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+   $(document).ready(function () {
+      $('#exampleModal').modal("show")
+   })
+</script>
+{% endblock %}

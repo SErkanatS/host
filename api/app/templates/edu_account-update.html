@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='img/default.jpg') }}" alt="avatar" class="rounded-circle img-fluid"
+              style="width: 150px;">
+            <h5 class="my-3"> {{ current_user.name }}  </h5>
+            <p class="text-muted mb-4">
+              {{ current_user.phone_number }}<br />
+              {{ current_user.email }}
+            </p>
+            <div class="d-flex justify-content-center mb-2">
+              <button class="btn btn-primary">
+                <a href="{{url_for('account')}}" style="text-decoration: none; color: #fff;">Назад</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+
+        <form method="POST" action="" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Информация</legend>
+            <div class="form-group">
+              {{ form.name.label(class="form-control-label") }}
+              {% if form.name.errors %}
+              {{ form.name(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.name.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.name(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+              {{ form.email.label(class="form-control-label") }}
+              {% if form.email.errors %}
+              {{ form.email(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.email(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+              {{ form.phone_number.label(class="form-control-label") }}
+              {% if form.phone_number.errors %}
+              {{ form.phone_number(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.phone_number.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.phone_number(class="form-control form-control-lg") }}
+              {% endif %}
+
+            </div><br>
+            <div class="form-group">
+              {{ form.address.label(class="form-control-label") }}
+              {% if form.address.errors %}
+              {{ form.address(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.address.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.address(class="form-control form-control-lg") }}
+              {% endif %}
+
+            </div>
+            <br>
+            
+            
+            <div class="form-group">
+              {{ form.description.label(class="form-control-label") }}
+              {% if form.description.errors %}
+              {{ form.description(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.description.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.description(class="form-control form-control-lg") }}
+              {% endif %}
+
+            </div><br>
+            
+          </fieldset>
+          <div class="form-group d-flex justify-content-center">
+            {{ form.update(class="btn btn-primary") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock %}

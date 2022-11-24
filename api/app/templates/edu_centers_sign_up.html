@@ -1,0 +1,116 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content-section">
+   <form method="POST" action="">
+      {{ edu_center_form.hidden_tag() }}
+      <fieldset class="form-group">
+         <legend class="border-bottom mb-4">Регистрация образовательного центра</legend>
+         
+         <div class="form-group">
+            {{ edu_center_form.name.label(class="form-control-label") }}
+            {% if edu_center_form.name.errors %}
+            {{ edu_center_form.name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in edu_center_form.name.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ edu_center_form.name(class="form-control form-control-lg") }}
+            {% endif %}
+
+          </div><br>
+          
+         
+          <div class="form-group">
+            {{ edu_center_form.phone_number.label(class="form-control-label") }}
+            {% if edu_center_form.phone_number.errors %}
+               {{ edu_center_form.phone_number(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.phone_number.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.phone_number(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+
+         <div class="form-group">
+            {{ edu_center_form.email.label(class="form-control-label") }}
+            {% if edu_center_form.email.errors %}
+               {{ edu_center_form.email(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.email.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.email(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ edu_center_form.address.label(class="form-control-label") }}
+            {% if edu_center_form.address.errors %}
+               {{ edu_center_form.address(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.address.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.address(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ edu_center_form.description.label(class="form-control-label") }}
+            {% if edu_center_form.description.errors %}
+               {{ edu_center_form.description(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.description.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.description(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ edu_center_form.password.label(class="form-control-label") }}
+            {% if edu_center_form.password.errors %}
+               {{ edu_center_form.password(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.password.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.password(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ edu_center_form.confirm_password.label(class="form-control-label") }}
+            {% if edu_center_form.confirm_password.errors %}
+               {{ edu_center_form.confirm_password(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in edu_center_form.confirm_password.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ edu_center_form.confirm_password(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         
+      </fieldset>
+      <div class="form-group">
+         {{ edu_center_form.submit(class="btn btn-outline-info") }}
+      </div>
+   </form>
+</div>
+<div class="border-top pt-3">
+   <small class="text-muted">
+      Уже есть аккаунт? <a href="{{ url_for('sign_in') }}" class="ml-2">Войти</a>
+   </small>
+</div>
+{% endblock %}

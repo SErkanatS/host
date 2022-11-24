@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content-section">
+   <form method="POST" action="">
+      {{ teacher_form.hidden_tag() }}
+      <fieldset class="form-group">
+         <legend class="border-bottom mb-4">Регистрация</legend>
+         
+         <div class="form-group">
+            {{ teacher_form.first_name.label(class="form-control-label") }}
+            {% if teacher_form.first_name.errors %}
+            {{ teacher_form.first_name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in teacher_form.first_name.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ teacher_form.first_name(class="form-control form-control-lg") }}
+            {% endif %}
+
+          </div><br>
+          <div class="form-group">
+            {{ teacher_form.last_name.label(class="form-control-label") }}
+            {% if teacher_form.last_name.errors %}
+            {{ teacher_form.last_name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in teacher_form.last_name.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ teacher_form.last_name(class="form-control form-control-lg") }}
+            {% endif %}
+          </div><br>
+         
+          <div class="form-group">
+            {{ teacher_form.phone_number.label(class="form-control-label") }}
+            {% if teacher_form.phone_number.errors %}
+               {{ teacher_form.phone_number(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in teacher_form.phone_number.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ teacher_form.phone_number(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+
+         <div class="form-group">
+            {{ teacher_form.email.label(class="form-control-label") }}
+            {% if teacher_form.email.errors %}
+               {{ teacher_form.email(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in teacher_form.email.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ teacher_form.email(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ teacher_form.password.label(class="form-control-label") }}
+            {% if teacher_form.password.errors %}
+               {{ teacher_form.password(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in teacher_form.password.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ teacher_form.password(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         <div class="form-group">
+            {{ teacher_form.confirm_password.label(class="form-control-label") }}
+            {% if teacher_form.confirm_password.errors %}
+               {{ teacher_form.confirm_password(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                  {% for error in teacher_form.confirm_password.errors %}
+                     <span>{{ error }}</span>
+                  {% endfor %}
+               </div>
+            {% else %}
+               {{ teacher_form.confirm_password(class="form-control form-control-lg") }}
+            {% endif %}
+         </div><br>
+         
+      </fieldset>
+      <div class="form-group">
+         {{ teacher_form.submit(class="btn btn-outline-info") }}
+      </div>
+   </form>
+</div>
+<div class="border-top pt-3">
+   <small class="text-muted">
+      Уже есть аккаунт? <a href="{{ url_for('sign_in') }}" class="ml-2">Войти</a>
+   </small>
+</div>
+{% endblock %}

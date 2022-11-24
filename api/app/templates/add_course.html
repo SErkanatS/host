@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form id="ModalForm" name="stepForm" class="form" method="post">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+  </div>
+  <div class="modal-body">
+
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.course_name.label(class="form-control-label") }}
+      {% if form.course_name.errors %}
+      {{ form.course_name(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_name.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_name(class="form-control form-control-lg") }}
+      {% endif %}
+
+    </div><br>
+    <div class="form-group">
+      {{ form.course_price.label(class="form-control-label") }}
+      {% if form.course_price.errors %}
+      {{ form.course_price(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_price.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_price(class="form-control form-control-lg") }}
+      {% endif %}
+
+    </div><br>
+    <div class="form-group">
+      {{ form.course_description.label(class="form-control-label") }}
+      {% if form.course_description.errors %}
+      {{ form.course_description(class="form-control form-control-lg is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.course_description.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.course_description(class="form-control form-control-lg") }}
+      {% endif %}
+      <br>
+
+      
+    </div><br>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"> <a href="{{url_for('account')}}"
+        style="color: black; text-decoration: none;">Отмена</a> </button>
+        <a href="{{url_for('account')}}"
+        style="color: black; text-decoration: none;"><button id="submit" type="submit" class="btn btn-primary">Сохранить</button></a>
+  </div>
+</form>
+{% block modal %} 
+{% endblock %}
+{% endblock %}
+

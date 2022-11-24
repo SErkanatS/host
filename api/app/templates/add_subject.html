@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form id="ModalForm" name="stepForm" class="form" method="post">
+   <div class="modal-header">
+      <h4 class="modal-title">{{ title }}</h4>
+   </div>
+   <div class="modal-body">
+
+      {{ form.hidden_tag() }}
+
+      <div class="form-group">
+         {{ form.subject_name.label(class="form-control-label") }}
+         {% if form.subject_name.errors %}
+         {{ form.subject_name(class="form-control form-control-lg is-invalid") }}
+         <div class="invalid-feedback">
+           {% for error in form.subject_name.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+         </div>
+         {% else %}
+         {{ form.subject_name(class="form-control form-control-lg") }}
+         {% endif %}
+
+       </div><br>
+       <div class="form-group">
+         {{ form.subject_price.label(class="form-control-label") }}
+         {% if form.subject_price.errors %}
+         {{ form.subject_price(class="form-control form-control-lg is-invalid") }}
+         <div class="invalid-feedback">
+           {% for error in form.subject_price.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+         </div>
+         {% else %}
+         {{ form.subject_price(class="form-control form-control-lg") }}
+         {% endif %}
+
+       </div><br>
+        <div class="form-group">
+         {{ form.subject_description.label(class="form-control-label") }}
+         {% if form.subject_description.errors %}
+         {{ form.subject_description(class="form-control form-control-lg is-invalid") }}
+         <div class="invalid-feedback">
+           {% for error in form.subject_description.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+         </div>
+         {% else %}
+         {{ form.subject_description(class="form-control form-control-lg") }}
+         {% endif %}
+
+       </div><br>
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-default" > <a href="{{url_for('account')}}" style="color: black; text-decoration: none;">Отмена</a> </button>
+      <button id="submit" type="submit" class="btn btn-primary">Сохранить</button>
+   </div>
+</form>
+{% endblock %}

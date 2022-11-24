@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='img/default.jpg') }}" alt="avatar" class="rounded-circle img-fluid"
+              style="width: 150px;">
+            <h5 class="my-3"> {{ user.first_name }} {{ user.last_name }} </h5>
+            <p class="text-muted mb-1"> {{ user.specialization }} </p>
+            <p class="text-muted mb-4">
+              {{ user.phone_number }}<br />
+              {{ user.email }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Имя </p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"> {{ user.first_name }} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Фамилия </p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"> {{ user.last_name }} </p>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Город </p>
+              </div>
+              <div class="col-sm-9">
+                {% if user.city %}
+                <p class="text-muted mb-0"> 
+                  {{ user.city }} </p>
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Формат обучения </p>
+              </div>
+              <div class="col-sm-9">
+                {% if user.format_ %}
+                <p class="text-muted mb-0"> 
+                  {{ user.format_ }} </p>
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Языки обучения </p>
+              </div>
+              <div class="col-sm-9">
+                {% if user.languages %}
+                <p class="text-muted mb-0"> 
+                  {{ user.languages }} </p>
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Образование </p>
+              </div>
+              <div class="col-sm-9">
+                {% if user.education %}
+                <p class="text-muted mb-0"> 
+                  {{ user.education }} </p>
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Опыт </p>
+              </div>
+              <div class="col-sm-9">
+                {% if user.experience %}
+                <p class="text-muted mb-0"> 
+                  {{ user.experience }} </p>
+                  {% else %}
+                  <p></p>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center">
+          {% for subject in subjects%}
+          <div class="col-md-12 col-xl-4">
+            <div class="card mt-3 mb-2" style="border-radius: 15px;">
+              <div class="card-body text-center">
+                <h4 class="mb-2"> {{ subject.subject_name }} </h4>
+                <p class="text-muted mb-4">
+                  {{ subject.subject_price }} ₸/час<br />
+                  {{ subject.subject_description }}
+                </p>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock %}

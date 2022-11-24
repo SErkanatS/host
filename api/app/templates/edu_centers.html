@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container py-5 h-100">
+   <div class="row d-flex justify-content-center">
+      {% for edu_center in edu_centers%}
+      <div class="col-md-12 col-xl-4">
+         <div class="card mt-3 mb-2" style="border-radius: 15px;">
+            <div class="card-body text-center">
+               <div class="mt-3 mb-4">
+                  <img src="{{ url_for('static', filename='img/default.jpg') }}" class="rounded-circle img-fluid"
+                     style="width: 100px;" />
+               </div>
+               <h4 class="mb-2"> {{ edu_center.name }}</h4>
+               <p class="text-muted mb-4">
+                  {{ edu_center.phone_number }}<br />
+                  {{ edu_center.email }}
+               </p>
+               <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                  <a href="{{ url_for('edu_center_page', edu_center_id=edu_center.id) }}"
+                     style="text-decoration: none; color: white;">Подробнее</a>
+               </button>
+            </div>
+         </div>
+
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}
